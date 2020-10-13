@@ -51,6 +51,36 @@ class LinkedList:
         return self.head
 
 
+    def max(self):
+        node = self.head
+        max_node = self.head
+
+        while node != None:
+            if node.val > max_node.val:
+                max_node = node
+
+        return max_node
+
+
+    def remove(self, val):
+        if not self.head:
+            raise Exception("empty list")
+
+        if self.head.val == val:
+            self.head = self.head.next
+            return
+
+        prev = self.head
+        node = self.head
+        
+        while node != None:
+            if node.val == val:
+                prev.next = node.next
+                return
+            
+            prev = node
+        
+
     def __repr__(self): ### O(n)
         nodes = []
         node = self.head
